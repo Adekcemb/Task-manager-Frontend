@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import arrowleft from "../assets/Icons/arrow_left.png";
+import arrowleft from "../assets/icons/arrow_left.png";
 import Button from "../components/Button";
 
-const NewTask = ({baseURL}) => {
+const NewTask = ({ baseURL }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState("");
 
-  const createTask = async (task)=>{
+  const createTask = async (task) => {
     const response = await fetch(`${baseURL}/tasks/create`, {
-    method: 'POST',
-    headers: {
-      'content-type': "application/json",
-    },
-    body: JSON.stringify(task),
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(task),
     });
     const data = await response.json();
     console.log(data);
@@ -32,7 +32,7 @@ const NewTask = ({baseURL}) => {
           console.log("Form Submitted");
           const formData = { title, description, tag };
           console.log(formData);
-          createTask(formData)
+          createTask(formData);
         }}
         className="w-100 d-flex flex-column gap-5"
       >
